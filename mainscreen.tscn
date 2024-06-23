@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://dk1bgf0i6y4ob"]
+[gd_scene load_steps=5 format=3 uid="uid://dk1bgf0i6y4ob"]
 
-[ext_resource type="Texture2D" uid="uid://c2sjvjsi6thk" path="res://Steel Cricket.png" id="1_x8ch2"]
+[ext_resource type="Texture2D" uid="uid://2ut0nhjmaam1" path="res://Ship.png" id="1_y5h0u"]
 [ext_resource type="Texture2D" uid="uid://ckua0c1vnqo6f" path="res://Particles/star_09.png" id="2_31ma8"]
+[ext_resource type="Script" path="res://GPUParticles2D.gd" id="3_kfg15"]
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_8nkcm"]
 particle_flag_disable_z = true
@@ -10,14 +11,16 @@ gravity = Vector3(0, 98, 0)
 [node name="Mainscreen" type="Node2D"]
 position = Vector2(7, -2)
 
-[node name="Logo" type="Sprite2D" parent="."]
-position = Vector2(577, 240)
-texture = ExtResource("1_x8ch2")
+[node name="Node2D" type="Node2D" parent="."]
 
-[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
-position = Vector2(924, 491)
-rotation = -6.28319
-scale = Vector2(0.1, 0.1)
+[node name="Ship" type="Sprite2D" parent="Node2D"]
+position = Vector2(559, 193)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("1_y5h0u")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="Node2D/Ship"]
+position = Vector2(8, 316)
+scale = Vector2(0.4, 0.4)
 amount = 16
 amount_ratio = 0.581
 process_material = SubResource("ParticleProcessMaterial_8nkcm")
@@ -31,3 +34,42 @@ collision_base_size = 0.0
 visibility_rect = Rect2(0, 0, 200, 200)
 local_coords = true
 trail_lifetime = 1.72
+script = ExtResource("3_kfg15")
+
+[node name="GPUParticles2D2" type="GPUParticles2D" parent="Node2D/Ship"]
+position = Vector2(-96, 308)
+scale = Vector2(0.3, 0.3)
+amount = 16
+amount_ratio = 0.581
+process_material = SubResource("ParticleProcessMaterial_8nkcm")
+texture = ExtResource("2_31ma8")
+lifetime = 7.06
+preprocess = 0.7
+speed_scale = 3.59
+explosiveness = 0.16
+randomness = 0.48
+collision_base_size = 0.0
+visibility_rect = Rect2(0, 0, 200, 200)
+local_coords = true
+trail_lifetime = 1.72
+script = ExtResource("3_kfg15")
+
+[node name="GPUParticles2D3" type="GPUParticles2D" parent="Node2D/Ship"]
+position = Vector2(88, 308)
+scale = Vector2(0.3, 0.3)
+amount = 16
+amount_ratio = 0.581
+process_material = SubResource("ParticleProcessMaterial_8nkcm")
+texture = ExtResource("2_31ma8")
+lifetime = 7.06
+preprocess = 0.7
+speed_scale = 3.59
+explosiveness = 0.16
+randomness = 0.48
+collision_base_size = 0.0
+visibility_rect = Rect2(0, 0, 200, 200)
+local_coords = true
+trail_lifetime = 1.72
+script = ExtResource("3_kfg15")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D"]
