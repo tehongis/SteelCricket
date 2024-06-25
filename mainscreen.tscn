@@ -72,4 +72,4 @@ local_coords = true
 trail_lifetime = 1.72
 script = ExtResource("3_kfg15")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D"]
+[node name="CharacterBody2D" type="CharacterBody2D" parent="Node2D"]
