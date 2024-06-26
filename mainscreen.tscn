@@ -1,8 +1,27 @@
-[gd_scene load_steps=5 format=3 uid="uid://dk1bgf0i6y4ob"]
+[gd_scene load_steps=8 format=3 uid="uid://dk1bgf0i6y4ob"]
 
+[ext_resource type="Shader" path="res://PlayerShip.gdshader" id="1_k8k8b"]
 [ext_resource type="Texture2D" uid="uid://2ut0nhjmaam1" path="res://Ship.png" id="1_y5h0u"]
 [ext_resource type="Texture2D" uid="uid://ckua0c1vnqo6f" path="res://Particles/star_09.png" id="2_31ma8"]
 [ext_resource type="Script" path="res://GPUParticles2D.gd" id="3_kfg15"]
+
+[sub_resource type="GDScript" id="GDScript_pysx8"]
+script/source = "shader_type canvas_item;
+
+void fragment() {
+	vec4 color = texture(TEXTURE,UV);
+	color.rgb = mix(color.rgb, vec3(1,1,1),1);
+	COLOR = color;
+}
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_n8lmh"]
+shader = ExtResource("1_k8k8b")
+shader_parameter/flash_color = Color(1, 1, 1, 1)
+shader_parameter/flash_modifier = 0.0
+script = SubResource("GDScript_pysx8")
+shader_parameter/flash_color = Color(1, 1, 1, 1)
+shader_parameter/flash_modifier = 0.0
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_8nkcm"]
 particle_flag_disable_z = true
@@ -14,6 +33,7 @@ position = Vector2(7, -2)
 [node name="Node2D" type="Node2D" parent="."]
 
 [node name="Ship" type="Sprite2D" parent="Node2D"]
+material = SubResource("ShaderMaterial_n8lmh")
 position = Vector2(559, 193)
 scale = Vector2(0.25, 0.25)
 texture = ExtResource("1_y5h0u")
