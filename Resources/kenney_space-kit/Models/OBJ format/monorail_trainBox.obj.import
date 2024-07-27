@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://x1a7n7hivs0a"
+path="res://.godot/imported/monorail_trainBox.obj-c81dad3b2e4502cb4ba6bcfd3990503c.mesh"
+
+[deps]
+
+files=["res://.godot/imported/monorail_trainBox.obj-c81dad3b2e4502cb4ba6bcfd3990503c.mesh"]
+
+source_file="res://Resources/kenney_space-kit/Models/OBJ format/monorail_trainBox.obj"
+dest_files=["res://.godot/imported/monorail_trainBox.obj-c81dad3b2e4502cb4ba6bcfd3990503c.mesh", "res://.godot/imported/monorail_trainBox.obj-c81dad3b2e4502cb4ba6bcfd3990503c.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false

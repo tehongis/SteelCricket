@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://v0lhv7xumr0a"
+path="res://.godot/imported/corridor_roof.obj-b2db28725d43757b5253d91daf5fd510.mesh"
+
+[deps]
+
+files=["res://.godot/imported/corridor_roof.obj-b2db28725d43757b5253d91daf5fd510.mesh"]
+
+source_file="res://Resources/kenney_space-kit/Models/OBJ format/corridor_roof.obj"
+dest_files=["res://.godot/imported/corridor_roof.obj-b2db28725d43757b5253d91daf5fd510.mesh", "res://.godot/imported/corridor_roof.obj-b2db28725d43757b5253d91daf5fd510.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false

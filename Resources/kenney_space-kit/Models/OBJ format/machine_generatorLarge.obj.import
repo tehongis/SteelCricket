@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://bjwskyckup61u"
+path="res://.godot/imported/machine_generatorLarge.obj-a7a3db8b18c62eb0b0293a62a1dd7a4f.mesh"
+
+[deps]
+
+files=["res://.godot/imported/machine_generatorLarge.obj-a7a3db8b18c62eb0b0293a62a1dd7a4f.mesh"]
+
+source_file="res://Resources/kenney_space-kit/Models/OBJ format/machine_generatorLarge.obj"
+dest_files=["res://.godot/imported/machine_generatorLarge.obj-a7a3db8b18c62eb0b0293a62a1dd7a4f.mesh", "res://.godot/imported/machine_generatorLarge.obj-a7a3db8b18c62eb0b0293a62a1dd7a4f.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false

@@ -1,47 +1,38 @@
-[gd_scene load_steps=6 format=3 uid="uid://dk1bgf0i6y4ob"]
+[gd_scene load_steps=6 format=3 uid="uid://b8ru84ar1d0y"]
 
-[ext_resource type="Texture2D" uid="uid://g8s8xuwtqusf" path="res://Images/greenX.png" id="1_bsswd"]
-[ext_resource type="Script" path="res://Scripts/PlayerMove.gd" id="2_rfbhy"]
-[ext_resource type="Texture2D" uid="uid://3tjbcw83t1kx" path="res://Images/ship.png" id="3_f4cnm"]
+[ext_resource type="Script" path="res://Scripts/CharacterMove.gd" id="1_n4t8x"]
+[ext_resource type="PackedScene" uid="uid://cw2sqk8sve8u6" path="res://Resources/kenney_space-kit/Models/DAE format/craft_speederA.dae" id="1_px3aa"]
+[ext_resource type="PackedScene" uid="uid://ypqkedpuvsqc" path="res://Resources/kenney_space-kit/Models/DAE format/terrain.dae" id="2_qxtbh"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_4rdtj"]
-size = Vector2(37, 37)
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_2vxa7"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_1ubw4"]
-size = Vector2(106, 85)
+[sub_resource type="BoxShape3D" id="BoxShape3D_voxmu"]
 
-[node name="Node2D" type="Node2D"]
-position = Vector2(200, 100)
+[node name="Node3D" type="Node3D"]
 
-[node name="Joint" type="Node2D" parent="."]
+[node name="CharacterBody3D" type="CharacterBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+motion_mode = 1
+script = ExtResource("1_n4t8x")
 
-[node name="DampedSpringJoint2D" type="DampedSpringJoint2D" parent="Joint"]
-node_a = NodePath("../CharacterBody2D")
-node_b = NodePath("../RigidBody2D")
-disable_collision = false
-length = 200.0
-rest_length = 250.0
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D"]
+transform = Transform3D(1.91069e-15, 4.37114e-08, 1, 1, -4.37114e-08, 0, 4.37114e-08, 1, -4.37114e-08, 0, 0.355, 0)
+shape = SubResource("CapsuleShape3D_2vxa7")
 
-[node name="RigidBody2D" type="RigidBody2D" parent="Joint"]
-position = Vector2(0, 200)
+[node name="craft_speederA" parent="CharacterBody3D" instance=ExtResource("1_px3aa")]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Joint/RigidBody2D"]
-position = Vector2(0.5, 0.5)
-shape = SubResource("RectangleShape2D_4rdtj")
+[node name="Camera3D" type="Camera3D" parent="CharacterBody3D"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 1.5, -5)
 
-[node name="Sprite2D" type="Sprite2D" parent="Joint/RigidBody2D"]
-texture = ExtResource("1_bsswd")
+[node name="Node3D" type="Node3D" parent="."]
 
-[node name="CharacterBody2D" type="CharacterBody2D" parent="Joint"]
-script = ExtResource("2_rfbhy")
+[node name="StaticBody3D" type="StaticBody3D" parent="Node3D"]
 
-[node name="Sprite2D2" type="Sprite2D" parent="Joint/CharacterBody2D"]
-position = Vector2(-0.5, -0.5)
-texture = ExtResource("3_f4cnm")
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Node3D/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+shape = SubResource("BoxShape3D_voxmu")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Joint/CharacterBody2D"]
-position = Vector2(-1, -0.5)
-shape = SubResource("RectangleShape2D_1ubw4")
+[node name="terrain" parent="Node3D" instance=ExtResource("2_qxtbh")]
 
-[node name="TileMap" type="TileMap" parent="."]
-format = 2
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.829445, 0.4087, 0.380769, -0.548841, 0.723072, 0.419452, -0.103893, -0.556894, 0.82406, 0, 1, 0)
