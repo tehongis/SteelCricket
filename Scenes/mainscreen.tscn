@@ -1,14 +1,14 @@
 [gd_scene load_steps=6 format=3 uid="uid://dk1bgf0i6y4ob"]
 
-[ext_resource type="Texture2D" uid="uid://rbhjqld1ajy8" path="res://Crosshairs/window_01.png" id="1_oteuh"]
-[ext_resource type="Script" path="res://MouseMove.gd" id="2_nx16c"]
-[ext_resource type="Texture2D" uid="uid://b7d8dqhkq3h42" path="res://icon.svg" id="2_sgcg1"]
+[ext_resource type="Texture2D" uid="uid://g8s8xuwtqusf" path="res://Images/greenX.png" id="1_bsswd"]
+[ext_resource type="Script" path="res://Scripts/PlayerMove.gd" id="2_rfbhy"]
+[ext_resource type="Texture2D" uid="uid://3tjbcw83t1kx" path="res://Images/ship.png" id="3_f4cnm"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4rdtj"]
-size = Vector2(27, 37)
+size = Vector2(37, 37)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1ubw4"]
-size = Vector2(33, 33)
+size = Vector2(106, 85)
 
 [node name="Node2D" type="Node2D"]
 position = Vector2(200, 100)
@@ -29,18 +29,16 @@ position = Vector2(0, 100)
 position = Vector2(0.5, 0.5)
 shape = SubResource("RectangleShape2D_4rdtj")
 
-[node name="Sprite2D" type="Sprite2D" parent="Joint/DampedSpringJoint2D/RigidBody2D/CollisionShape2D"]
-position = Vector2(-0.5, -0.5)
-scale = Vector2(0.1, 0.1)
-texture = ExtResource("1_oteuh")
+[node name="Sprite2D" type="Sprite2D" parent="Joint/DampedSpringJoint2D/RigidBody2D"]
+texture = ExtResource("1_bsswd")
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="Joint/DampedSpringJoint2D"]
-script = ExtResource("2_nx16c")
+script = ExtResource("2_rfbhy")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Joint/DampedSpringJoint2D/CharacterBody2D"]
-position = Vector2(-0.5, -0.5)
+position = Vector2(-1, -0.5)
 shape = SubResource("RectangleShape2D_1ubw4")
 
-[node name="Sprite2D2" type="Sprite2D" parent="Joint/DampedSpringJoint2D/CharacterBody2D/CollisionShape2D"]
-scale = Vector2(0.25, 0.25)
-texture = ExtResource("2_sgcg1")
+[node name="Sprite2D2" type="Sprite2D" parent="Joint/DampedSpringJoint2D/CharacterBody2D"]
+position = Vector2(-0.5, -0.5)
+texture = ExtResource("3_f4cnm")

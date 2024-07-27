@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Steel Cricket"
-run/main_scene="res://mainscreen.tscn"
+run/main_scene="res://Scenes/mainscreen.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://icon.svg"
 

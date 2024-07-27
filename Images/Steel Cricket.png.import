@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c2sjvjsi6thk"
-path="res://.godot/imported/Steel Cricket.png-f181971818697ce8032daa8c2e0dbfcd.ctex"
+uid="uid://cnyw1483jel8m"
+path="res://.godot/imported/Steel Cricket.png-c0cd2d778655cc4a09cca023e1092229.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Steel Cricket.png"
-dest_files=["res://.godot/imported/Steel Cricket.png-f181971818697ce8032daa8c2e0dbfcd.ctex"]
+source_file="res://Images/Steel Cricket.png"
+dest_files=["res://.godot/imported/Steel Cricket.png-c0cd2d778655cc4a09cca023e1092229.ctex"]
 
 [params]
 
