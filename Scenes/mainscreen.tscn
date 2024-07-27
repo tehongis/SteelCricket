@@ -16,29 +16,32 @@ position = Vector2(200, 100)
 [node name="Joint" type="Node2D" parent="."]
 
 [node name="DampedSpringJoint2D" type="DampedSpringJoint2D" parent="Joint"]
-node_a = NodePath("CharacterBody2D")
-node_b = NodePath("RigidBody2D")
+node_a = NodePath("../CharacterBody2D")
+node_b = NodePath("../RigidBody2D")
 disable_collision = false
-length = 100.0
-rest_length = 50.0
+length = 200.0
+rest_length = 250.0
 
-[node name="RigidBody2D" type="RigidBody2D" parent="Joint/DampedSpringJoint2D"]
-position = Vector2(0, 100)
+[node name="RigidBody2D" type="RigidBody2D" parent="Joint"]
+position = Vector2(0, 200)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Joint/DampedSpringJoint2D/RigidBody2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Joint/RigidBody2D"]
 position = Vector2(0.5, 0.5)
 shape = SubResource("RectangleShape2D_4rdtj")
 
-[node name="Sprite2D" type="Sprite2D" parent="Joint/DampedSpringJoint2D/RigidBody2D"]
+[node name="Sprite2D" type="Sprite2D" parent="Joint/RigidBody2D"]
 texture = ExtResource("1_bsswd")
 
-[node name="CharacterBody2D" type="CharacterBody2D" parent="Joint/DampedSpringJoint2D"]
+[node name="CharacterBody2D" type="CharacterBody2D" parent="Joint"]
 script = ExtResource("2_rfbhy")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Joint/DampedSpringJoint2D/CharacterBody2D"]
+[node name="Sprite2D2" type="Sprite2D" parent="Joint/CharacterBody2D"]
+position = Vector2(-0.5, -0.5)
+texture = ExtResource("3_f4cnm")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Joint/CharacterBody2D"]
 position = Vector2(-1, -0.5)
 shape = SubResource("RectangleShape2D_1ubw4")
 
-[node name="Sprite2D2" type="Sprite2D" parent="Joint/DampedSpringJoint2D/CharacterBody2D"]
-position = Vector2(-0.5, -0.5)
-texture = ExtResource("3_f4cnm")
+[node name="TileMap" type="TileMap" parent="."]
+format = 2

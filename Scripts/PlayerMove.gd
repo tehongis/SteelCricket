@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 # Speed of the player
-var speed = 500
+var speed = 10000
 
 # Vibration parameters
 var weak_magnitude = 0.5
