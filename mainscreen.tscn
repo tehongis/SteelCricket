@@ -1,95 +1,46 @@
-[gd_scene load_steps=8 format=3 uid="uid://dk1bgf0i6y4ob"]
+[gd_scene load_steps=6 format=3 uid="uid://dk1bgf0i6y4ob"]
 
-[ext_resource type="Shader" path="res://PlayerShip.gdshader" id="1_k8k8b"]
-[ext_resource type="Texture2D" uid="uid://2ut0nhjmaam1" path="res://Ship.png" id="1_y5h0u"]
-[ext_resource type="Texture2D" uid="uid://ckua0c1vnqo6f" path="res://Particles/star_09.png" id="2_31ma8"]
-[ext_resource type="Script" path="res://GPUParticles2D.gd" id="3_kfg15"]
+[ext_resource type="Texture2D" uid="uid://rbhjqld1ajy8" path="res://Crosshairs/window_01.png" id="1_oteuh"]
+[ext_resource type="Script" path="res://MouseMove.gd" id="2_nx16c"]
+[ext_resource type="Texture2D" uid="uid://b7d8dqhkq3h42" path="res://icon.svg" id="2_sgcg1"]
 
-[sub_resource type="GDScript" id="GDScript_pysx8"]
-script/source = "shader_type canvas_item;
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4rdtj"]
+size = Vector2(27, 37)
 
-void fragment() {
-	vec4 color = texture(TEXTURE,UV);
-	color.rgb = mix(color.rgb, vec3(1,1,1),1);
-	COLOR = color;
-}
-"
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1ubw4"]
+size = Vector2(33, 33)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_n8lmh"]
-shader = ExtResource("1_k8k8b")
-shader_parameter/flash_color = Color(1, 1, 1, 1)
-shader_parameter/flash_modifier = 0.0
-script = SubResource("GDScript_pysx8")
-shader_parameter/flash_color = Color(1, 1, 1, 1)
-shader_parameter/flash_modifier = 0.0
+[node name="Node2D" type="Node2D"]
+position = Vector2(200, 100)
 
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_8nkcm"]
-particle_flag_disable_z = true
-gravity = Vector3(0, 98, 0)
+[node name="Joint" type="Node2D" parent="."]
 
-[node name="Mainscreen" type="Node2D"]
-position = Vector2(7, -2)
+[node name="DampedSpringJoint2D" type="DampedSpringJoint2D" parent="Joint"]
+node_a = NodePath("CharacterBody2D")
+node_b = NodePath("RigidBody2D")
+disable_collision = false
+length = 100.0
+rest_length = 50.0
 
-[node name="Node2D" type="Node2D" parent="."]
+[node name="RigidBody2D" type="RigidBody2D" parent="Joint/DampedSpringJoint2D"]
+position = Vector2(0, 100)
 
-[node name="Ship" type="Sprite2D" parent="Node2D"]
-material = SubResource("ShaderMaterial_n8lmh")
-position = Vector2(559, 193)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Joint/DampedSpringJoint2D/RigidBody2D"]
+position = Vector2(0.5, 0.5)
+shape = SubResource("RectangleShape2D_4rdtj")
+
+[node name="Sprite2D" type="Sprite2D" parent="Joint/DampedSpringJoint2D/RigidBody2D/CollisionShape2D"]
+position = Vector2(-0.5, -0.5)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("1_oteuh")
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="Joint/DampedSpringJoint2D"]
+script = ExtResource("2_nx16c")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Joint/DampedSpringJoint2D/CharacterBody2D"]
+position = Vector2(-0.5, -0.5)
+shape = SubResource("RectangleShape2D_1ubw4")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Joint/DampedSpringJoint2D/CharacterBody2D/CollisionShape2D"]
 scale = Vector2(0.25, 0.25)
-texture = ExtResource("1_y5h0u")
-
-[node name="GPUParticles2D" type="GPUParticles2D" parent="Node2D/Ship"]
-position = Vector2(8, 316)
-scale = Vector2(0.4, 0.4)
-amount = 16
-amount_ratio = 0.581
-process_material = SubResource("ParticleProcessMaterial_8nkcm")
-texture = ExtResource("2_31ma8")
-lifetime = 7.06
-preprocess = 0.7
-speed_scale = 3.59
-explosiveness = 0.16
-randomness = 0.48
-collision_base_size = 0.0
-visibility_rect = Rect2(0, 0, 200, 200)
-local_coords = true
-trail_lifetime = 1.72
-script = ExtResource("3_kfg15")
-
-[node name="GPUParticles2D2" type="GPUParticles2D" parent="Node2D/Ship"]
-position = Vector2(-96, 308)
-scale = Vector2(0.3, 0.3)
-amount = 16
-amount_ratio = 0.581
-process_material = SubResource("ParticleProcessMaterial_8nkcm")
-texture = ExtResource("2_31ma8")
-lifetime = 7.06
-preprocess = 0.7
-speed_scale = 3.59
-explosiveness = 0.16
-randomness = 0.48
-collision_base_size = 0.0
-visibility_rect = Rect2(0, 0, 200, 200)
-local_coords = true
-trail_lifetime = 1.72
-script = ExtResource("3_kfg15")
-
-[node name="GPUParticles2D3" type="GPUParticles2D" parent="Node2D/Ship"]
-position = Vector2(88, 308)
-scale = Vector2(0.3, 0.3)
-amount = 16
-amount_ratio = 0.581
-process_material = SubResource("ParticleProcessMaterial_8nkcm")
-texture = ExtResource("2_31ma8")
-lifetime = 7.06
-preprocess = 0.7
-speed_scale = 3.59
-explosiveness = 0.16
-randomness = 0.48
-collision_base_size = 0.0
-visibility_rect = Rect2(0, 0, 200, 200)
-local_coords = true
-trail_lifetime = 1.72
-script = ExtResource("3_kfg15")
-
-[node name="CharacterBody2D" type="CharacterBody2D" parent="Node2D"]
+texture = ExtResource("2_sgcg1")
