@@ -11,8 +11,13 @@ config_version=5
 [application]
 
 config/name="Steel Cricket"
+<<<<<<< Updated upstream
 run/main_scene="res://Scenes/mainscreen.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
+=======
+run/main_scene="res://mainscreen.tscn"
+config/features=PackedStringArray("4.3", "Forward Plus")
+>>>>>>> Stashed changes
 config/icon="res://icon.svg"
 
 [input]
