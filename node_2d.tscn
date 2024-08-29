@@ -399,6 +399,18 @@ use_parent_material = true
 tile_set = SubResource("TileSet_bvpn8")
 script = ExtResource("4_tpnl3")
 
+[node name="Box" type="RigidBody2D" parent="."]
+position = Vector2(229, 100)
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Box"]
+shape = SubResource("RectangleShape2D_uacay")
+
+[node name="Sprite2D" type="Sprite2D" parent="Box"]
+texture = ExtResource("4_y6du7")
+region_enabled = true
+region_rect = Rect2(48, 24, 24, 24)
+
 [node name="Player" type="CharacterBody2D" parent="."]
 position = Vector2(400, 200)
 collision_mask = 2
