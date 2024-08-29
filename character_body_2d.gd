@@ -15,11 +15,13 @@ var player_position = null
 var box_position = null
 
 func _ready():
-	var root_node = get_parent()
-	var player = root_node.get_node("Player")
-	var box = root_node.get_node("Box")
-	player_position = player.global_position
-	box_position = box.global_position
+	get_tree().get_root().print_tree_pretty()
+	
+	var root_node = get_tree().get_root()
+	var player = get_tree().get_root().get_node("Main/Player/Player")
+	var box = get_tree().get_root().get_node("Main/Box/Box")
+	#player_position = player.global_position
+	#box_position = box.global_position
 
 func get_input():
 	#rotation = get_global_mouse_position().angle_to_point(position)
@@ -32,15 +34,14 @@ func get_input():
 			get_tree().current_scene.remove_child(spring)
 			connected = false
 		else:
-			var box = get_node("../Box")
 			#print(box)
 			spring = DampedSpringJoint2D.new()
-			spring.position = Vector2.ZERO
-			spring.node_a = self.get_path()
-			spring.node_b = box.get_path()
-			spring.length = 2
-			spring.rest_length = 0
-			spring.stiffness = 1
+			spring.position = get_tree().get_root().get_node("Main/Player/Player").global_position
+			spring.node_a = get_tree().get_root().get_node("Main/Player/Player").get_path()
+			spring.node_b = get_tree().get_root().get_node("Main/Box/Box").get_path()
+			spring.length = 5
+			spring.rest_length = 5
+			spring.stiffness = 10
 			get_tree().current_scene.add_child(spring)
 			connected = true
 

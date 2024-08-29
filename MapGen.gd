@@ -7,7 +7,7 @@ var noise = FastNoiseLite.new()
 var width = 128
 var height = 64
 
-@onready var player = get_parent().get_node("Player")
+@onready var player = get_tree().get_root().get_node("Main/Player/Player")
 
 func _ready() -> void:
 	noise.seed= 3

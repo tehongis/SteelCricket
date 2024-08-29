@@ -1,15 +1,13 @@
-[gd_scene load_steps=9 format=3 uid="uid://4bn2mbjo5vfi"]
+[gd_scene load_steps=6 format=3 uid="uid://coef6gp65y8d1"]
 
-[ext_resource type="Texture2D" uid="uid://dq8rl77ugmddu" path="res://Resources/kenney_pixel-platformer/Tilemap/tilemap_packed.png" id="2_ishoc"]
-[ext_resource type="Script" path="res://character_body_2d.gd" id="2_n6do8"]
-[ext_resource type="Script" path="res://MapGen.gd" id="4_tpnl3"]
-[ext_resource type="Texture2D" uid="uid://i3ygomqx2dk3" path="res://Resources/kenney_pixel-platformer/Tilemap/tilemap-characters_packed.png" id="4_y6du7"]
+[ext_resource type="Texture2D" uid="uid://dq8rl77ugmddu" path="res://Resources/kenney_pixel-platformer/Tilemap/tilemap_packed.png" id="1_gccvv"]
+[ext_resource type="Script" path="res://MapGen.gd" id="2_3em71"]
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_xnb03"]
 tile_data = PackedInt32Array(0, 1048576, 0, 65536, 1048576, 1, 131072, 1048576, 2, 196608, 1048576, 3, 1, 1114112, 0, 65537, 1114112, 1, 131073, 1114112, 2, 196609, 1114112, 3, 2, 1179648, 0, 65538, 1179648, 1, 131074, 1179648, 2, 196610, 1179648, 3, 3, 1245184, 0, 65539, 1245184, 1, 131075, 1245184, 2, 196611, 1245184, 3)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7u4sg"]
-texture = ExtResource("2_ishoc")
+texture = ExtResource("1_gccvv")
 texture_region_size = Vector2i(18, 18)
 0:0/0 = 0
 0:0/0/terrain_set = 0
@@ -389,37 +387,9 @@ terrain_set_0/terrain_2/color = Color(0.46875, 0.5, 0.25, 1)
 sources/0 = SubResource("TileSetAtlasSource_7u4sg")
 pattern_0 = SubResource("TileMapPattern_xnb03")
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_uacay"]
-size = Vector2(16, 16)
-
-[node name="Node2D" type="Node2D"]
+[node name="Map" type="Node2D"]
 
 [node name="Layer0" type="TileMapLayer" parent="."]
 use_parent_material = true
 tile_set = SubResource("TileSet_bvpn8")
-script = ExtResource("4_tpnl3")
-
-[node name="Box" type="RigidBody2D" parent="."]
-position = Vector2(229, 100)
-collision_mask = 2
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Box"]
-shape = SubResource("RectangleShape2D_uacay")
-
-[node name="Sprite2D" type="Sprite2D" parent="Box"]
-texture = ExtResource("4_y6du7")
-region_enabled = true
-region_rect = Rect2(48, 24, 24, 24)
-
-[node name="Player" type="CharacterBody2D" parent="."]
-position = Vector2(400, 200)
-collision_mask = 2
-script = ExtResource("2_n6do8")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
-shape = SubResource("RectangleShape2D_uacay")
-
-[node name="Sprite2D" type="Sprite2D" parent="Player"]
-texture = ExtResource("4_y6du7")
-region_enabled = true
-region_rect = Rect2(0, 0, 24, 24)
+script = ExtResource("2_3em71")
