@@ -27,6 +27,7 @@ func generate_chunk(position):
 			#var v = round(vpart.get_noise_2d(tile_pos.x + x - width/2, tile_pos.y + y - height/2)*2)
 			if tileid == 1:
 				set_cell(Vector2i(tile_pos.x - width/2 + x, tile_pos.y - height/2 + y),0,Vector2i(2,6))
+				#set_cells_terrain_connect(layer: int, cells: Array[Vector2i], terrain_set: int, terrain: int, ignore_empty_terrains: bool = true)
 			#else:
 			#	set_cell(Vector2i(tile_pos.x - width/2 + x, tile_pos.y - height/2 + y),0,Vector2i(13,3))
 
