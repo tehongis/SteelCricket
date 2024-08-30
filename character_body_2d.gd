@@ -18,10 +18,6 @@ func _ready():
 	get_tree().get_root().print_tree_pretty()
 	
 	var root_node = get_tree().get_root()
-	var player = get_tree().get_root().get_node("Main/Player/Player")
-	var box = get_tree().get_root().get_node("Main/Box/Box")
-	#player_position = player.global_position
-	#box_position = box.global_position
 
 func get_input():
 	#rotation = get_global_mouse_position().angle_to_point(position)
@@ -45,6 +41,21 @@ func get_input():
 			get_tree().current_scene.add_child(spring)
 			connected = true
 
+func _draw():
+	var to = get_viewport_rect().size / 2
+	var from = get_viewport().get_mouse_position()
+	#draw_line(Vector2(50, 40), Vector2(-150, -40), Color.GREEN, 1.0)
+	#draw_line(Vector2(40, 60), Vector2(-140, -90), Color.GREEN, 2.0)
+	#draw_line(Vector2(75, 90), Vector2(-175, -140), Color.GREEN, 3.0)
+	if connected:
+		var player = get_tree().get_root().get_node("Main/Player/Player")
+		var box = get_tree().get_root().get_node("Main/Box/Box")
+
+		player_position = player.global_position
+		box_position = box.global_position
+		draw_line(to, box_position, Color.CORAL, 2.0)
+	#draw_line(from, to, Color.DARK_VIOLET, 3.0)
+
 
 func _physics_process(delta):
 	get_input()
@@ -61,8 +72,7 @@ func _physics_process(delta):
 	velocity.x = velocity.x * inertia
 	velocity.y = velocity.y * inertia
 
-	move_and_slide()
+	queue_redraw()
 
-func _draw():
-	if connected:
-		draw_line(player_position, box_position, Color.GREEN, 1.0)
+	move_and_slide()
+		
